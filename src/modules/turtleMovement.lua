@@ -13,19 +13,17 @@ The module relies on the turtle API to execute the movement commands.
 ]]--
 
 -- Require the harvestDetection module
-local harvestDetection = require("harvestDetection")
+local harvestDetection = require("modules.harvestDetection")
 
 local turtleActions = {
     moveForward = function()
         -- Detect and harvest block in front before moving forward
-        -- NOTE: This is specific to the bamboo farm. For other farms, this should be changed accordingly.
         harvestDetection.detectAndHarvest("minecraft:bamboo", "forward")
         turtle.forward()
     end,
     turnAround = function() turtle.turnRight(); turtle.turnRight() end,
     moveDown = function()
         -- Detect and harvest block below before moving down
-        -- NOTE: This is specific to the bamboo farm. For other farms, this should be changed accordingly.
         harvestDetection.detectAndHarvest("minecraft:bamboo", "down")
         turtle.down()
     end

@@ -10,9 +10,9 @@ The script performs the following steps:
 4. Moves the turtle according to the generated pattern using the turtleMovement module.
 ]]--
 
-local turtleMovement = require("turtleMovement")
-local patternGeneration = require("patternGeneration")
-local fuelManager = require("fuelManager")
+local turtleMovement = require("modules.turtleMovement")
+local patternGeneration = require("modules.patternGeneration")
+local fuelManager = require("modules.fuelManager")
 
 local length = 3
 local height = 2

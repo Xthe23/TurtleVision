@@ -96,8 +96,6 @@ local function refuelFromChest()
     end
 end
 
--- ... [The rest of the code remains unchanged]
-
 local function checkFuel(pattern, operationType)
     local fuelUnit = fuelConsumption() -- Get the fuel consumption unit
 
