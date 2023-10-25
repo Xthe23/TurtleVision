@@ -18,20 +18,22 @@ local harvestDetection = require("modules.harvestDetection")
 local turtleActions = {
     moveForward = function()
         -- Detect and harvest block in front before moving forward
+        -- NOTE: This is specific to the bamboo farm. For other farms, this should be changed accordingly.
         harvestDetection.detectAndHarvest("minecraft:bamboo", "forward")
         turtle.forward()
     end,
     turnAround = function() turtle.turnRight(); turtle.turnRight() end,
     moveDown = function()
         -- Detect and harvest block below before moving down
+        -- NOTE: This is specific to the bamboo farm. For other farms, this should be changed accordingly.
         harvestDetection.detectAndHarvest("minecraft:bamboo", "down")
         turtle.down()
-    end
+    end,
+    moveUp = function() turtle.up() end
 }
 
 --- Moves the turtle based on the provided serpentine pattern.
 -- @param pattern The serpentine pattern string.
-
 function moveTurtle(pattern)
     local direction = 1 -- 1 for moving right, -1 for moving left
 
@@ -63,6 +65,18 @@ function moveTurtle(pattern)
     end
 end
 
+--- Moves the turtle directly from its current position to the starting position.
+-- @param height The height of the grid.
+-- @param lastValue The value of the last row's starting position.
+-- @param firstValue The value of the first row's starting position.
+function returnToStart(height, lastValue, firstValue)
+    -- Move up by the height of the grid minus one
+    for i = 1, height - 1 do
+        turtleActions.moveUp()
+    end
+end
+
 return {
-    moveTurtle = moveTurtle
+    moveTurtle = moveTurtle,
+    returnToStart = returnToStart
 }

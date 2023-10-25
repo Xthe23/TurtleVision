@@ -14,26 +14,13 @@ the respective patterns or values.
 ]]--
 
 --- Returns the start value for the last row based on the grid dimensions.
--- @param length The length of the grid.
--- @param height The height of the grid.
--- @return The start value for the last row.
-local function return_pattern(length, height)
-    if length < 1 or height < 1 then
-        return "Invalid dimensions"
-    end
-
-    local result = {}
-    local lastRowStartValue = height % 2 == 0 and length or 1
-
-    for i = height, 1, -1 do
-        if i == height then
-            table.insert(result, tostring(lastRowStartValue))
-        elseif i == 1 then
-            table.insert(result, "1")
-        end
-    end
-
-    return table.concat(result, "")
+-- @param pattern The serpentine pattern string.
+-- @return The start value for the last row and the start value for the first row.
+local function return_pattern(pattern)
+    local lastRow = pattern:match(".*\n(.-)\n?$")
+    local lastValue = tonumber(lastRow:sub(1,1))
+    local firstValue = 1
+    return lastValue, firstValue
 end
 
 --- Generates a serpentine pattern based on the grid dimensions.

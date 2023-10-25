@@ -20,6 +20,9 @@ Fuel sources are prioritized in the following order:
 4. Bamboo
 ]]--
 
+local turtleMovement = require("modules.turtleMovement")
+local patternGeneration = require("modules.patternGeneration")
+
 local function getFuelPriority()
     return {
         "minecraft:lava_bucket",
