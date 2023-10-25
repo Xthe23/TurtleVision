@@ -96,16 +96,23 @@ local function refuelFromChest()
     end
 end
 
-local function checkFuel(length, height, operationType)
+-- ... [The rest of the code remains unchanged]
+
+local function checkFuel(pattern, operationType)
     local fuelUnit = fuelConsumption() -- Get the fuel consumption unit
 
     local requiredFuel = 0
 
     -- Calculate fuel requirements based on the operation type
     if operationType == "forward" then
-        requiredFuel = (length * height * 2) * fuelUnit -- Account for both movement and chopping/breaking actions
+        -- Calculate the total number of moves in the pattern
+        local totalMoves = 0
+        for _, row in ipairs(pattern) do
+            totalMoves = totalMoves + #row
+        end
+        requiredFuel = totalMoves * 2 * fuelUnit -- Account for both movement and chopping/breaking actions
     elseif operationType == "return" then
-        requiredFuel = (length + height) * fuelUnit -- Only account for movement during return
+        requiredFuel = #pattern * fuelUnit -- Only account for movement during return
     else
         error("Invalid operation type for fuel check.") -- Throw an error for invalid operation types
     end

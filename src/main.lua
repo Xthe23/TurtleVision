@@ -20,7 +20,7 @@ local height = 2
 local pattern = patternGeneration.serpentine_pattern(length, height)
 
 -- Check fuel before moving the turtle
-local isFuelSufficient = fuelManager.checkFuel(length, height, "forward")
+local isFuelSufficient = fuelManager.checkFuel(pattern, "forward")
 
 if not isFuelSufficient then
     print("Insufficient fuel to start operations. Please refuel the turtle.")
