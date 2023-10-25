@@ -5,7 +5,7 @@ This module provides functions to detect and dig harvestable blocks in front of 
 It uses the turtle's inspect function to check the block in front of it. If the block is configured as harvestable, the turtle will dig it.
 
 The module exports the following main function:
-1. detectAndDigBamboo: Inspects the block in front of the turtle. If the block is bamboo, the turtle digs it.
+1. detectAndHarvest: Inspects the block in front of the turtle. If the block is configred as harvestable, the turtle digs it.
 
 The module relies on the turtle API for inspecting and digging operations.
 ]]--
